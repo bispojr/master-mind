@@ -100,18 +100,18 @@ public class GrupoEsferasViewer
 
     public final void iniciaFundo() throws IOException {
         if (status.equals(Status.ATIVO)) {
-            fundo = new ImagePanel("/images/jogo/esferasAtivo.png");
+            fundo = new ImagePanel("/jogo/esferasAtivo.png");
             ativo = true;
         }
 
         if (status.equals(Status.ENVIADO)) {
-            fundo = new ImagePanel("/images/jogo/esferasEnviada.png");
+            fundo = new ImagePanel("/jogo/esferasEnviada.png");
             ativo = false;
         }
 
 
         if (status.equals(Status.ESPERA)) {
-            fundo = new ImagePanel("/images/jogo/esferasEspera.png");
+            fundo = new ImagePanel("/jogo/esferasEspera.png");
             ativo = false;
         }
         fundo.setLocation(0, 0);
@@ -207,13 +207,13 @@ public class GrupoEsferasViewer
 
     private void setFundo() throws IOException {
         if (status.equals(Status.ATIVO)) {
-            fundo.setImage("/images/jogo/esferasAtivo.png");
+            fundo.setImage("/jogo/esferasAtivo.png");
         }
         if (status.equals(Status.ENVIADO)) {
-            fundo.setImage("/images/jogo/esferasEnviada.png");
+            fundo.setImage("/jogo/esferasEnviada.png");
         }
         if (status.equals(Status.ESPERA)) {
-            fundo.setImage("/images/jogo/esferasEspera.png");
+            fundo.setImage("/jogo/esferasEspera.png");
         }
         setEsferasVisible();
     }

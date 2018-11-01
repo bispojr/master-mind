@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class EsferaModel
         extends JComponent
         implements Serializable {
-    public static String[] IMAGES = {"/images/jogo/vazio.png", "/images/jogo/azul.png", "/images/jogo/amarelo.png", "/images/jogo/rosa.png", "/images/jogo/roxo.png", "/images/jogo/laranja.png", "/images/jogo/marrom.png"};
+    public static String[] IMAGES = {"/jogo/vazio.png", "/jogo/azul.png", "/jogo/amarelo.png", "/jogo/rosa.png", "/jogo/roxo.png", "/jogo/laranja.png", "/jogo/marrom.png"};
 
 
     private static final String[] SONS = {"vazio.mp3", "azul.mp3", "amarelo.mp3", "rosa.mp3", "roxo.mp3", "laranja.mp3", "marrom.mp3"};

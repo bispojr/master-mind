@@ -3,16 +3,17 @@ package br.bispojr.mastermind.util;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 
-public class ImagePanel        extends JComponent {
+public class ImagePanel extends JComponent {
     private BufferedImage image = null;
 
 
-    private FillType fillType = FillType.DEFAULT;
+    private FillType fillType = FillType.CENTER;
 
 
     public ImagePanel(BufferedImage img) {
@@ -85,12 +86,43 @@ public class ImagePanel        extends JComponent {
      * FIXME Verificar porque nao aceita abstract (Ver versão do Java)
      */
 
-    public static abstract enum FillType {
-        DEFAULT, RESIZE, CENTER, SIDE_BY_SIDE, ASPECT_RATIO, ASPECT_RATIO_CENTER;
+    public static enum FillType {
+        /**
+         * Make the image size equal to the panel size, by resizing it.
+         */
+        RESIZE {
+            @Override
+            public void drawImage(JComponent panel, Graphics2D g2d,
+                                  BufferedImage image) {
+                g2d.drawImage(image, 0, 0, panel.getWidth(), panel.getHeight(),
+                        null);
+            }
+        },
+        /**
+         * Centers the image on the panel.
+         */
+        CENTER {
+            @Override
+            public void drawImage(JComponent panel, Graphics2D g2d,
+                                  BufferedImage image) {
+                int left = (panel.getHeight() - image.getHeight()) / 2;
+                int top = (panel.getWidth() - image.getWidth()) / 2;
+                g2d.drawImage(image, top, left, null);
+            }
+        },
+        /**
+         * Makes several copies of the image in the panel, putting them side by
+         * side.
+         */
+        SIDE_BY_SIDE {
+            @Override
+            public void drawImage(JComponent panel, Graphics2D g2d, BufferedImage image) {
+                Paint p = new TexturePaint(image, new Rectangle2D.Float(0, 0, image.getWidth(), image.getHeight()));
+                g2d.setPaint(p);
+                g2d.fillRect(0, 0, panel.getWidth(), panel.getHeight());
+            }
+        };
 
-        private FillType() {
-        }
-
-        public abstract void drawImage(JComponent paramJComponent, Graphics2D paramGraphics2D, BufferedImage paramBufferedImage);
+        public abstract void drawImage(JComponent panel, Graphics2D g2d, BufferedImage image);
     }
 }
