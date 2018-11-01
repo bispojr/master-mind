@@ -3,6 +3,7 @@ package br.bispojr.mastermind.configuracao;
 import br.bispojr.mastermind.audio.TocarAudio;
 import br.bispojr.mastermind.jogo.observer.Observado;
 import br.bispojr.mastermind.jogo.observer.Observador;
+import br.bispojr.mastermind.jogo.viewer.util.MetodosUteis;
 import br.bispojr.mastermind.util.ImagePanel;
 import br.bispojr.mastermind.util.MButton;
 import br.bispojr.mastermind.util.UpdateLabels;
@@ -230,21 +231,7 @@ public final class ConfiguracaoViewer
 
     public static void main(String[] a)
             throws IOException, FileNotFoundException, JavaLayerException {
-        for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                try {
-                    UIManager.setLookAndFeel(info.getClassName());
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Dialog.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InstantiationException ex) {
-                    Logger.getLogger(Dialog.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IllegalAccessException ex) {
-                    Logger.getLogger(Dialog.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Dialog.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+        MetodosUteis.configureNimbus();
 
 
         JFrame janela = new JFrame();
@@ -254,6 +241,7 @@ public final class ConfiguracaoViewer
         janela.setDefaultCloseOperation(3);
         janela.setVisible(true);
     }
+
 
     public void updateLabels() {
         labelSom.setText(ConfiguracaoControle.bundleMesagens.getString("lbMusica"));

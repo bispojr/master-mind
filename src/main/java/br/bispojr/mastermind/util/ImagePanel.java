@@ -8,8 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class ImagePanel
-        extends JComponent {
+public class ImagePanel        extends JComponent {
     private BufferedImage image = null;
 
 

@@ -14,14 +14,14 @@ public class ResultadoModel
     public String nome;
     public Integer tempo;
     public Integer quantTentativas;
-    public double pontuaçao;
+    public double pontuacao;
 
-    public double getPontuaçao() {
-        return pontuaçao;
+    public double getPontuacao() {
+        return pontuacao;
     }
 
-    public void setPontuaçao(double pontuaçao) {
-        this.pontuaçao = pontuaçao;
+    public void setPontuacao(double pontuaçao) {
+        this.pontuacao = pontuaçao;
     }
 
     public int getQuantTentativas() {
