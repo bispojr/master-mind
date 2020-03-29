@@ -3,6 +3,7 @@ package br.bispojr.mastermind.configuracao;
 import br.bispojr.mastermind.audio.TocarAudio;
 import br.bispojr.mastermind.jogo.observer.Observado;
 import br.bispojr.mastermind.jogo.observer.Observador;
+import br.bispojr.mastermind.jogo.viewer.util.MetodosUteis;
 import br.bispojr.mastermind.util.ImagePanel;
 import br.bispojr.mastermind.util.MButton;
 import br.bispojr.mastermind.util.UpdateLabels;
@@ -33,9 +34,9 @@ public final class ConfiguracaoViewer
     private JLabel labelIdiomas;
     private JLabel labelPot;
     private JLabel labelEng;
-    private final String IMAGE_FUNDO = "/images/configs/fundoOpcoes.png";
-    private final String IMAGE_BTopcoes = "/images/configs/btOpcoes.png";
-    private final String IMAGE_BTopcoes2 = "/images/configs/btOpcoes2.png";
+    private final String IMAGE_FUNDO = "/configs/fundoOpcoes.png";
+    private final String IMAGE_BTopcoes = "/configs/btOpcoes.png";
+    private final String IMAGE_BTopcoes2 = "/configs/btOpcoes2.png";
     private final JRadioButton radioIngles;
     ConfiguracaoModel a = ConfiguracaoControle.getConfiguracaoModel();
     public List<Observador> obserList = new ArrayList();
@@ -46,23 +47,27 @@ public final class ConfiguracaoViewer
     Thread th;
     Runnable r;
 
+    private int somaLocalizacaoX = 6;
+    private int somaLocalizacaoY = 6;
+
     public ConfiguracaoViewer(boolean ativaSom) {
         r = this;
 
         setLayout(new BorderLayout());
         setSize(241, 273);
 
+
         a.setEfeitos(true);
         a.setMusica(false);
         try {
-            panelFundo = new ImagePanel("/images/configs/fundoOpcoes.png");
+            panelFundo = new ImagePanel("/configs/fundoOpcoes.png");
         } catch (IOException ex) {
             Logger.getLogger(ConfiguracaoViewer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
         checkSom = new JCheckBox();
-        checkSom.setLocation(41, 22);
+        checkSom.setLocation(41+ somaLocalizacaoX, 22+somaLocalizacaoY);
         checkSom.setSelected(ativaSom);
         checkSom.setSize(20, 20);
         checkSom.setCursor(new Cursor(12));
@@ -81,7 +86,7 @@ public final class ConfiguracaoViewer
             }
         });
         checkEfeitos = new JCheckBox();
-        checkEfeitos.setLocation(40, 53);
+        checkEfeitos.setLocation(40+somaLocalizacaoX, 53+somaLocalizacaoY);
         checkEfeitos.setSelected(ativaSom);
         checkEfeitos.setSize(20, 20);
         checkEfeitos.setCursor(new Cursor(12));
@@ -111,7 +116,7 @@ public final class ConfiguracaoViewer
 
 
         radioPortugues = new JRadioButton();
-        radioPortugues.setLocation(41, 117);
+        radioPortugues.setLocation(41+somaLocalizacaoX, 117+somaLocalizacaoY);
         radioPortugues.setSize(20, 20);
         radioPortugues.setName("radioPt");
         radioPortugues.setMnemonic('p');
@@ -125,7 +130,7 @@ public final class ConfiguracaoViewer
 
         });
         radioIngles = new JRadioButton();
-        radioIngles.setLocation(41, 145);
+        radioIngles.setLocation(41+somaLocalizacaoX, 145+somaLocalizacaoY);
         radioIngles.setSize(20, 20);
         radioIngles.setName("radioEn");
         radioIngles.setMnemonic('e');
@@ -162,7 +167,7 @@ public final class ConfiguracaoViewer
         labelEng.setForeground(Color.WHITE);
 
 
-        btPontuacoes = new MButton("/images/configs/btOpcoes.png", "/images/configs/btOpcoes.png", "/images/configs/btOpcoes2.png");
+        btPontuacoes = new MButton("/configs/btOpcoes.png", "/configs/btOpcoes.png", "/configs/btOpcoes2.png");
         btPontuacoes.setRolloverEnabled(true);
         btPontuacoes.setText(ConfiguracaoControle.bundleMesagens.getString("lbBtPontuacoes"));
         btPontuacoes.setLocation(48, 178);
@@ -193,7 +198,7 @@ public final class ConfiguracaoViewer
 
             }
         }).start();
-        btTutorial = new MButton("/images/configs/btOpcoes.png", "/images/configs/btOpcoes.png", "/images/configs/btOpcoes2.png");
+        btTutorial = new MButton("/configs/btOpcoes.png", "/configs/btOpcoes.png", "/configs/btOpcoes2.png");
         btTutorial.setRolloverEnabled(true);
         btTutorial.setText(ConfiguracaoControle.bundleMesagens.getString("lbBtAjuda"));
         btTutorial.setLocation(48, 218);
@@ -230,21 +235,7 @@ public final class ConfiguracaoViewer
 
     public static void main(String[] a)
             throws IOException, FileNotFoundException, JavaLayerException {
-        for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                try {
-                    UIManager.setLookAndFeel(info.getClassName());
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Dialog.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InstantiationException ex) {
-                    Logger.getLogger(Dialog.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IllegalAccessException ex) {
-                    Logger.getLogger(Dialog.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(Dialog.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+        MetodosUteis.configureNimbus();
 
 
         JFrame janela = new JFrame();
@@ -254,6 +245,7 @@ public final class ConfiguracaoViewer
         janela.setDefaultCloseOperation(3);
         janela.setVisible(true);
     }
+
 
     public void updateLabels() {
         labelSom.setText(ConfiguracaoControle.bundleMesagens.getString("lbMusica"));

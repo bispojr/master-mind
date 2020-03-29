@@ -27,8 +27,8 @@ public final class ResultadoViewer
     setSize(74, 27);
     
 
-    preta = new ImagePanel("/images/jogo/preta.png");
-    branca = new ImagePanel("/images/jogo/branca.png");
+    preta = new ImagePanel("/jogo/preta.png");
+    branca = new ImagePanel("/jogo/branca.png");
     
     preta.setSize(18, 18);
     preta.setLocation(5, 4);
@@ -50,11 +50,11 @@ public final class ResultadoViewer
   ImagePanel criaBolinha(int cor, int x, int y) throws IOException {
     ImagePanel b = null;
     if (cor == 0) {
-      b = new ImagePanel("/images/jogo/preta.png");
+      b = new ImagePanel("/jogo/preta.png");
       corp += 1;
     }
     if (cor == 1) {
-      b = new ImagePanel("/images/jogo/branca.png");
+      b = new ImagePanel("/jogo/branca.png");
       corb += 1;
     }
     b.setSize(18, 18);

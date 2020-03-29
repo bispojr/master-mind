@@ -19,7 +19,7 @@ public class ConfiguracaoControle
 
     public static Principal tela = null;
     public static ConfiguracaoModel configuracaoModel = new ConfiguracaoModel();
-    public static ResourceBundle bundleMesagens = ResourceBundle.getBundle("configuracao/messages");
+    public static ResourceBundle bundleMesagens = ResourceBundle.getBundle("messages");
     public static ArrayList<ResultadoModel> resultados;
     public static boolean jogando = false;
 
@@ -86,7 +86,7 @@ public class ConfiguracaoControle
 
     public static void setLocale(Locale locale) {
         System.out.print("Setando escolha de Linguagem: ");
-        bundleMesagens = ResourceBundle.getBundle("configuracao/messages", locale);
+        bundleMesagens = ResourceBundle.getBundle("messages", locale);
 
         configuracaoModel.setLocale(locale);
     }

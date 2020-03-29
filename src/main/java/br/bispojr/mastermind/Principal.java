@@ -33,19 +33,19 @@ public class Principal
         setLayout(new BorderLayout());
         setUndecorated(true);
         setSize(674, 611);
-        setIconImage(getToolkit().getImage(getClass().getResource("/images/jogo/icone.png")));
+        setIconImage(getToolkit().getImage(getClass().getResource("/jogo/icone.png")));
 
-        logo = new MButton("/images/jogo/logo.png");
+        logo = new MButton("/jogo/logo.png");
         logo.setSize(337, 125);
         logo.setLocation(10, 40);
         logo.setCursor(new Cursor(0));
         tela = getContentPane();
 
-        fundo = new ImagePanel("/images/jogo/fundo.png");
+        fundo = new ImagePanel("/jogo/fundo.png");
         fundo.setLayout(null);
         fundo.setBorder(BorderFactory.createRaisedBevelBorder());
 
-        btFexar = new MButton("/images/jogo/fechar.png", "/images/jogo/fechar.png", "/images/jogo/fechar2.png");
+        btFexar = new MButton("/jogo/fechar.png", "/jogo/fechar.png", "/jogo/fechar2.png");
         btFexar.setRolloverEnabled(true);
         btFexar.setLocation(649, 4);
         btFexar.setSize(20, 20);
@@ -56,7 +56,7 @@ public class Principal
             }
 
         });
-        btMin = new MButton("/images/jogo/min.png", "/images/jogo/min.png", "/images/jogo/min2.png");
+        btMin = new MButton("/jogo/min.png", "/jogo/min.png", "/jogo/min2.png");
         btMin.setRolloverEnabled(true);
         btMin.setLocation(619, 4);
         btMin.setSize(21, 21);
@@ -77,7 +77,7 @@ public class Principal
 
 
         config = new ConfiguracaoViewer(false);
-        config.setLocation(31, 265);
+        config.setLocation(25, 260);
 
         config.adicionarObservador(jogo);
 

@@ -53,14 +53,14 @@ public final class PainelJogoViewer
         setSize(318, 549);
 
         setLayout(null);
-        fundoPainel = new ImagePanel("/images/jogo/fundoJogadas.png");
+        fundoPainel = new ImagePanel("/jogo/fundoJogadas.png");
         fundoPainel.setLayout(null);
         fundoPainel.setSize(SIZE_PANEL);
         fundoPainel.setLocation(0, 0);
         add(fundoPainel, "Center");
         jogoModel = new JogoModel();
 
-        btJogar = new MButton("/images/jogo/btNovoJogo.png", "/images/jogo/btNovoJogo.png", "/images/jogo/btNovoJogo2.png");
+        btJogar = new MButton("/jogo/btNovoJogo.png", "/jogo/btNovoJogo.png", "/jogo/btNovoJogo2.png");
         btJogar.setForeground(Color.white);
         btJogar.setRolloverEnabled(true);
         btJogar.setFont(new Font("Arial", 1, 20));
@@ -93,7 +93,7 @@ public final class PainelJogoViewer
         timer.para();
 
 
-        fundoTimer = new ImagePanel("/images/jogo/fundoTempo.png");
+        fundoTimer = new ImagePanel("/jogo/fundoTempo.png");
         fundoTimer.setLocation(81, 1);
         fundoTimer.setSize(150, 54);
         fundoPainel.add(fundoTimer);
@@ -109,11 +109,11 @@ public final class PainelJogoViewer
 
         fundoTimer.add(lbTimer);
 
-        fundoEnviar = new ImagePanel("/images/jogo/fundoEnviar.png");
-        fundoEnviar.setLocation(185, 59);
+        fundoEnviar = new ImagePanel("/jogo/fundoEnviar.png");
+        fundoEnviar.setLocation(183, 46);
         fundoEnviar.setSize(115, 502);
 
-        enviar = new MButton("/images/jogo/btEnviar1.png", "/images/jogo/btEnviar1.png", "/images/jogo/btEnviar2.png");
+        enviar = new MButton("/jogo/btEnviar1.png", "/jogo/btEnviar1.png", "/jogo/btEnviar2.png");
         enviar.setRolloverEnabled(true);
         enviar.setSize(88, 33);
         enviar.setText(ConfiguracaoControle.bundleMesagens.getString("btEnviar"));
@@ -161,13 +161,13 @@ public final class PainelJogoViewer
 
     public void setBotaoInicia() {
         if (jogoModel.isJogando()) {
-            btJogar.setIcon("/images/jogo/btDesistir.png");
-            btJogar.setRolloverIcon("/images/jogo/btDesistir2.png");
+            btJogar.setIcon("/jogo/btDesistir.png");
+            btJogar.setRolloverIcon("/jogo/btDesistir2.png");
             btJogar.setRolloverEnabled(false);
             btJogar.setText(ConfiguracaoControle.bundleMesagens.getString("lbDesistirJogo"));
         } else {
-            btJogar.setIcon("/images/jogo/btNovoJogo.png");
-            btJogar.setRolloverIcon("/images/jogo/btNovoJogo2.png");
+            btJogar.setIcon("/jogo/btNovoJogo.png");
+            btJogar.setRolloverIcon("/jogo/btNovoJogo2.png");
             btJogar.setText(ConfiguracaoControle.bundleMesagens.getString("lbNovoJogo"));
         }
     }
